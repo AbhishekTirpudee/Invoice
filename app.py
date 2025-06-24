@@ -4,7 +4,8 @@ from main import Client, Item, Invoice, generate_pdf
 import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.urandom(24)
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'fallback-key')
+
 
 @app.route('/')
 def index():
